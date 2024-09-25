@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import Button from 'react-bootstrap/Button'; // Importando o componente Button do React Bootstrap
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form' // Importando o componente Button do React Bootstrap
 
 function App() {
   // Definindo o estado para os campos de entrada e a mensagem de erro
@@ -32,21 +33,15 @@ function App() {
     <main>
       <section>
         <div>
-          <h2 className='login_title'>Formulário de Login</h2>
+          <h2 className='login_title'>Suporte SOFT</h2>
           
           {error && <p style={{ color: 'red' }}>{error}</p>}
           
           <form onSubmit={handleSubmit}>
-            <div>
-              <label className='login_label'>Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Digite seu email"
-                maxLength={25}
-              />
-            </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"/>
+            <label for="floatingInput">Email address</label>
+          </div>
 
             <div>
               <label className='login_label'>Senha:</label>
