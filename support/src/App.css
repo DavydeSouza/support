@@ -1,0 +1,31 @@
+/* Estilizando o corpo da página para centralizar o formulário */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Estilo da seção principal do formulário */
+section {
+  background-color: whitesmoke;
+  padding: 4rem;
+
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Título do formulário */
+
+/* Estilo da mensagem de erro */
+p {
+  color: red;
+  text-align: center;
+  margin-bottom: 1rem;
+}
