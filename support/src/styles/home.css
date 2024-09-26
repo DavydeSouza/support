@@ -5,6 +5,7 @@ body {
 }
 
 #sidebar {
+
     min-width: 250px; /* Largura do menu lateral */
     height: 100vh; /* Altura total da tela */
     padding: 20px; /* Espaçamento interno */
@@ -13,7 +14,7 @@ body {
 .sidebar-header {
     padding: 20px;
     background: #6c757d; /* Cor do cabeçalho */
-    color: white;
+    color: rgb(219, 207, 207);
 }
 
 .components li {
@@ -27,5 +28,11 @@ body {
 }
 
 .components a:hover {
-    background: #f8f9fa; /* Cor ao passar o mouse */
+    background: #bbbdbe;
+    min-width: 160px;
+    color:aliceblue;
+    border-radius: 6px; /* Cor ao passar o mouse */
+}
+.menunav{
+    background-color:rgb(255, 251, 0)
 }

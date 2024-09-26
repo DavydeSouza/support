@@ -49,7 +49,7 @@ function Login() {
                 maxLength={12}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <label htmlFor="floatingInput">Email</label>
+              <label htmlFor="floatingInput" >Email</label>
             </div>
 
             <div className="form-floating mb-3">

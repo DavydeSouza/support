@@ -8,8 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Faz com que o corpo ocupe toda a altura da viewport */
-  background-color: #007bff; /* Cor de fundo */
+  height: 100vh; /* Faz com que o corpo ocupe toda a altura da viewport */ /* Cor de fundo */
 }
 
 main {
