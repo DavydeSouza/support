@@ -1,8 +1,9 @@
 // src/components/Home.jsx
-import React, { useState } from 'react'; // Importando useState
-import { Navbar, Nav, Container, Modal, Button } from 'react-bootstrap'; // Importando Modal e Button
+import React, { useState } from 'react';
+import {Nav, Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/home.css'; // Importar o CSS personalizado
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false);
@@ -11,32 +12,20 @@ const Home = () => {
     const handleShow = () => setShowModal(true);
 
     return (
-        <div className="d-flex flex-column min-vh-100">
-            {/* Navbar */}
-            <Navbar className='menunav' expand="lg">
-                <Container>
-                    <Navbar.Brand href="/home">Support Soft</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link href="/home"></Nav.Link>
-                            <Nav.Link href="#about"></Nav.Link>
-                            <Nav.Link href="#services"></Nav.Link>
-                            <Nav.Link href="#contact">Contato</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-
+        <>
             <div className="d-flex">
-                {/* Sidebar */}
-                <nav className="bg-light border-right" id="sidebar" style={{ width: '250px' }}>
+               
+                <nav className="bg-light border-right" id="sidebar">
                     <ul className="list-unstyled components">
                         <li>
-                            <Nav.Link href="#home">Home</Nav.Link>
+                            <Nav.Link href='/home'>Principal</Nav.Link>
                         </li>
                         <li>
-                            <Nav.Link onClick={handleShow}>Sobre</Nav.Link>
+                            <Nav.Link href="#home">Abertura de Chamado</Nav.Link>
+                        </li>
+                        <li>
+                            {/* Texto adicionado para o botão de modal */}
+                            <Nav.Link onClick={handleShow}>Sobre o Software</Nav.Link>
                         </li>
                         <li>
                             <Nav.Link href="#services">Serviços</Nav.Link>
@@ -50,40 +39,36 @@ const Home = () => {
                 {/* Main Content */}
                 <main className="flex-fill p-3">
                     <h2>Página Inicial</h2>
-                    <p>Bem-vindo ao meu aplicativo!</p>
+                    <h1>Bem-vindo ao meu aplicativo!</h1>
                 </main>
             </div>
 
             {/* Modal */}
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Sobre</Modal.Title>
+                    <Modal.Title>Sobre o Software</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                Software para Controle de Chamados: Gestão Eficiente de Demandas
+                    <p><strong>Software para Controle de Chamados:</strong> Gestão Eficiente de Demandas</p>
+                    <p>Nos dias de hoje, a eficiência no atendimento ao cliente é fundamental para o sucesso de qualquer organização. Um software de controle de chamados é uma ferramenta essencial que permite a abertura, acompanhamento e fechamento de solicitações de forma organizada e transparente.</p>
 
-Nos dias de hoje, a eficiência no atendimento ao cliente é fundamental para o sucesso de qualquer organização. Um software de controle de chamados é uma ferramenta essencial que permite a abertura, acompanhamento e fechamento de solicitações de forma organizada e transparente.
+                    <p><strong>Principais Recursos:</strong></p>
+                    <ul>
+                        <li>Abertura de Chamados: Interface intuitiva para que os usuários possam registrar suas demandas de maneira rápida e fácil, incluindo informações detalhadas sobre o problema.</li>
+                        <li>Rastreamento em Tempo Real: Acompanhe o status de cada chamado em tempo real, garantindo que nada seja esquecido ou atrasado.</li>
+                        <li>Prioridade e Classificação: Classifique os chamados por prioridade e categoria, permitindo que a equipe se concentre nas demandas mais urgentes.</li>
+                        <li>Respostas Automatizadas: Crie respostas automáticas para as perguntas frequentes, otimizando o tempo da equipe de suporte.</li>
+                        <li>Relatórios e Análises: Gere relatórios detalhados sobre o desempenho do atendimento, identificando áreas para melhoria e tendências nas solicitações.</li>
+                        <li>Integração com Outros Sistemas: Conecte-se facilmente a outras ferramentas e sistemas utilizados pela empresa, promovendo uma gestão ainda mais integrada.</li>
+                    </ul>
 
-Principais Recursos:
-
-Abertura de Chamados: Interface intuitiva para que os usuários possam registrar suas demandas de maneira rápida e fácil, incluindo informações detalhadas sobre o problema.
-
-Rastreamento em Tempo Real: Acompanhe o status de cada chamado em tempo real, garantindo que nada seja esquecido ou atrasado.
-
-Prioridade e Classificação: Classifique os chamados por prioridade e categoria, permitindo que a equipe se concentre nas demandas mais urgentes.
-
-Respostas Automatizadas: Crie respostas automáticas para as perguntas frequentes, otimizando o tempo da equipe de suporte.
-
-Relatórios e Análises: Gere relatórios detalhados sobre o desempenho do atendimento, identificando áreas para melhoria e tendências nas solicitações.
-
-Integração com Outros Sistemas: Conecte-se facilmente a outras ferramentas e sistemas utilizados pela empresa, promovendo uma gestão ainda mais integrada.
-
-Benefícios:
-
-Aumento da Satisfação do Cliente: Um atendimento ágil e organizado resulta em clientes mais satisfeitos e leais.
-Melhoria na Produtividade da Equipe: Com processos automatizados, a equipe pode se concentrar em resolver problemas complexos em vez de tarefas administrativas.
-Visibilidade e Transparência: Todos os envolvidos têm acesso às informações dos chamados, promovendo uma cultura de transparência.
-A adoção de um software para controle de chamados não apenas melhora a eficiência operacional, mas também fortalece a relação com os clientes, contribuindo para o crescimento sustentável da sua empresa.
+                    <p><strong>Benefícios:</strong></p>
+                    <ul>
+                        <li>Aumento da Satisfação do Cliente: Um atendimento ágil e organizado resulta em clientes mais satisfeitos e leais.</li>
+                        <li>Melhoria na Produtividade da Equipe: Com processos automatizados, a equipe pode se concentrar em resolver problemas complexos em vez de tarefas administrativas.</li>
+                        <li>Visibilidade e Transparência: Todos os envolvidos têm acesso às informações dos chamados, promovendo uma cultura de transparência.</li>
+                    </ul>
+                    <p>A adoção de um software para controle de chamados não apenas melhora a eficiência operacional, mas também fortalece a relação com os clientes, contribuindo para o crescimento sustentável da sua empresa.</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -91,7 +76,7 @@ A adoção de um software para controle de chamados não apenas melhora a efici�
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </div>
+        </>
     );
 };
 

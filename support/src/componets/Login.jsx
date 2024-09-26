@@ -36,7 +36,7 @@ function Login() {
         <div>
           <h2 className='login_title'>Suporte SOFT</h2>
           
-          {error && <p style={{ color: 'red' }}>{error}</p>}
+          {error && <p className='error'>{error}</p>}
           
           <form onSubmit={handleSubmit}>
             <div className="form-floating mb-3">

@@ -46,7 +46,7 @@ section {
 }
 
 /* Estilo da mensagem de erro */
-p {
+.error{
   color: red;
   text-align: center;
   margin-bottom: 1rem;
