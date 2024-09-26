@@ -1,0 +1,72 @@
+/* src/styles/Login.css */
+
+/* Estilizando o corpo da página para centralizar o formulário */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Faz com que o corpo ocupe toda a altura da viewport */
+  background-color: #007bff; /* Cor de fundo */
+}
+
+main {
+  width: 100%;
+  max-width: 400px; /* Controlando o tamanho máximo da área do formulário */
+  padding: 2rem;
+  box-sizing: border-box; /* Para incluir padding e border no cálculo de largura */
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo dentro do main */
+  align-items: center; /* Alinha os itens verticalmente */
+}
+
+/* Estilo da seção principal do formulário */
+section {
+  background-color: whitesmoke;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 368px; /* Tamanho máximo do formulário */
+  text-align: center; /* Centraliza o texto dentro do formulário */
+}
+
+.login_label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Título do formulário */
+.login_title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Estilo da mensagem de erro */
+p {
+  color: red;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.875rem; /* Um pouco menor que o texto normal */
+}
+
+/* Estilo do botão */
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+

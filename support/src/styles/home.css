@@ -1,0 +1,31 @@
+/* src/components/Home.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#sidebar {
+    min-width: 250px; /* Largura do menu lateral */
+    height: 100vh; /* Altura total da tela */
+    padding: 20px; /* Espaçamento interno */
+}
+
+.sidebar-header {
+    padding: 20px;
+    background: #6c757d; /* Cor do cabeçalho */
+    color: white;
+}
+
+.components li {
+    padding: 10px 0;
+}
+
+.components a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.components a:hover {
+    background: #f8f9fa; /* Cor ao passar o mouse */
+}
