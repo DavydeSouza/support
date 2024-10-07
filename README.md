@@ -83,6 +83,8 @@ Este projeto é licenciado sob a licença MIT. Consulte o arquivo LICENSE para m
 
 ## Contato
 Nome: Davy de Souza
+
 Email: davydesouza02@gmail.com
+
 GitHub: DavydeSouza
 
