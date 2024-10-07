@@ -88,7 +88,7 @@ const Home = () => {
                         <Table striped bordered hover>
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th></th>
                                     <th>Título</th>
                                     <th>Descrição</th>
                                     <th>Prioridade</th>
