@@ -7,13 +7,15 @@ import { NavLink } from 'react-router-dom';
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false);
-    const [showChamadoModal, setShowChamadoModal] = useState(false); // Modal para abertura de chamado
+    const [showChamadoModal, setShowChamadoModal] = useState(false); 
+    const [showAmpliachamado, setShowAmpliachamado] = useState(false); // Novo modal para ampliar chamados
     const [chamado, setChamado] = useState({
         titulo: '',
         descricao: '',
         prioridade: ''
     });
-    const [chamados, setChamados] = useState([]); // Estado para armazenar os chamados
+    const [chamados, setChamados] = useState([]); 
+    const [selectedChamado, setSelectedChamado] = useState(null); // Armazena o chamado clicado
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
@@ -21,7 +23,9 @@ const Home = () => {
     const handleChamadoClose = () => setShowChamadoModal(false);
     const handleChamadoShow = () => setShowChamadoModal(true);
 
-    // Atualiza o estado do chamado conforme o usuário digita
+    const handleAmpliachamadoShow = () => setShowAmpliachamado(true);
+    const handleAmpliachamadoClose = () => setShowAmpliachamado(false);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setChamado(prevState => ({
@@ -30,32 +34,26 @@ const Home = () => {
         }));
     };
 
-    // Simulando o envio do formulário para uma API
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Simular o envio de dados para uma API
         console.log('Chamado enviado:', chamado);
-
-        // Aqui você pode usar fetch ou axios para enviar o chamado para uma API
-
-        // Adicionando o chamado ao estado (simulando o retorno da API)
         setChamados(prevChamados => [...prevChamados, chamado]);
-
-        // Resetando o formulário após o envio
         setChamado({ titulo: '', descricao: '', prioridade: '' });
-        handleChamadoClose(); // Fecha o modal
+        handleChamadoClose();
     };
 
-    // Simulação de recuperação dos chamados (usando useEffect para simular uma chamada à API)
     useEffect(() => {
-        // Simulação de uma API que retorna os chamados
         const chamadosSimulados = [
             { titulo: "Problema no sistema", descricao: "Erro ao acessar", prioridade: "Alta" },
             { titulo: "Solicitação de suporte", descricao: "Não consigo acessar o e-mail", prioridade: "Média" }
         ];
         setChamados(chamadosSimulados);
     }, []);
+
+    const handleRowClick = (chamado) => {
+        setSelectedChamado(chamado);
+        handleAmpliachamadoShow();
+    };
 
     return (
         <>
@@ -66,7 +64,7 @@ const Home = () => {
                             <Nav.Link href='/home'>Principal</Nav.Link>
                         </li>
                         <li>
-                            <Nav.Link onClick={handleChamadoShow}>Abertura de Chamado</Nav.Link> {/* Botão para abrir o modal de chamado */}
+                            <Nav.Link onClick={handleChamadoShow}>Abertura de Chamado</Nav.Link>
                         </li>
                         <li>
                             <Nav.Link onClick={handleShow}>Sobre o Software</Nav.Link>
@@ -80,9 +78,7 @@ const Home = () => {
                     </ul>
                 </nav>
 
-                {/* Main Content */}
                 <main className="flex-fill p-3">
-                    {/* Exibindo a lista de chamados */}
                     <section className="mt-5">
                         <h3>Chamados Abertos</h3>
                         <Table striped bordered hover>
@@ -97,7 +93,7 @@ const Home = () => {
                             <tbody>
                                 {chamados.length > 0 ? (
                                     chamados.map((chamado, index) => (
-                                        <tr key={index}>
+                                        <tr key={index} onClick={() => handleRowClick(chamado)}>
                                             <td>{index + 1}</td>
                                             <td>{chamado.titulo}</td>
                                             <td>{chamado.descricao}</td>
@@ -115,13 +111,11 @@ const Home = () => {
                 </main>
             </div>
 
-            {/* Modal Sobre o Software */}
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Sobre o Software</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* Aqui vai o conteúdo do software */}
                     <p><strong>Software para Controle de Chamados:</strong> Gestão Eficiente de Demandas</p>
                     <p>Nos dias de hoje...</p>
                 </Modal.Body>
@@ -132,7 +126,6 @@ const Home = () => {
                 </Modal.Footer>
             </Modal>
 
-            {/* Modal de Abertura de Chamado */}
             <Modal show={showChamadoModal} onHide={handleChamadoClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Abertura de Chamado</Modal.Title>
@@ -150,7 +143,6 @@ const Home = () => {
                                 placeholder="Digite o título do chamado"
                             />
                         </Form.Group>
-
                         <Form.Group controlId="descricao" className="mt-3">
                             <Form.Label>Descrição</Form.Label>
                             <Form.Control
@@ -163,7 +155,6 @@ const Home = () => {
                                 placeholder="Descreva o problema"
                             />
                         </Form.Group>
-
                         <Form.Group controlId="prioridade" className="mt-3">
                             <Form.Label>Prioridade</Form.Label>
                             <Form.Select
@@ -178,7 +169,6 @@ const Home = () => {
                                 <option value="Alta">Alta</option>
                             </Form.Select>
                         </Form.Group>
-
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleChamadoClose}>
                                 Cancelar
@@ -189,6 +179,27 @@ const Home = () => {
                         </Modal.Footer>
                     </Form>
                 </Modal.Body>
+            </Modal>
+
+            {/* Modal para visualização do chamado ampliado */}
+            <Modal show={showAmpliachamado} onHide={handleAmpliachamadoClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Detalhes do Chamado</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {selectedChamado && (
+                        <>
+                            <p><strong>Título:</strong> {selectedChamado.titulo}</p>
+                            <p><strong>Descrição:</strong> {selectedChamado.descricao}</p>
+                            <p><strong>Prioridade:</strong> {selectedChamado.prioridade}</p>
+                        </>
+                    )}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleAmpliachamadoClose}>
+                        Fechar
+                    </Button>
+                </Modal.Footer>
             </Modal>
         </>
     );

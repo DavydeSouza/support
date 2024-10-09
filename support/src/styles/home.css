@@ -5,7 +5,6 @@ body {
 }
 
 #sidebar {
-
     min-width: 250px; /* Largura do menu lateral */
     height: 100vh; /* Altura total da tela */
     padding: 20px; /* Espaçamento interno */
@@ -30,9 +29,43 @@ body {
 .components a:hover {
     background: #bbbdbe;
     min-width: 160px;
-    color:aliceblue;
+    color: aliceblue;
     border-radius: 6px; /* Cor ao passar o mouse */
 }
-.menunav{
-    background-color:rgb(255, 251, 0)
+
+.menunav {
+    background-color: rgb(255, 251, 0); /* Cor do menu de navegação */
+}
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Tamanho do modal */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
