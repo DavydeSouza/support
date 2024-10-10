@@ -1,43 +1,65 @@
-/* src/components/Home.css */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif; /* Fonte mais moderna */
+    background-color: #f4f4f9; /* Fundo mais claro e suave */
 }
 
 #sidebar {
-    min-width: 250px; /* Largura do menu lateral */
-    height: 100vh; /* Altura total da tela */
-    padding: 20px; /* Espaçamento interno */
+    min-width: 250px;
+    height: 100vh;
+    padding: 20px;
+    background: linear-gradient(145deg, #3a3a3a, #575757); /* Gradiente para o fundo do menu */
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
+    color: #fff;
 }
 
 .sidebar-header {
     padding: 20px;
-    background: #6c757d; /* Cor do cabeçalho */
-    color: rgb(219, 207, 207);
+    background: #4e4e4e;
+    color: #f8f9fa;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #fff;
+}
+
+.components {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .components li {
-    padding: 10px 0;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .components a {
-    color: #333;
+    color: #f8f9fa;
     text-decoration: none;
     display: block;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out; /* Transição suave ao passar o mouse */
+    padding: 10px 15px;
+    border-radius: 6px;
 }
 
 .components a:hover {
-    background: #bbbdbe;
-    min-width: 160px;
-    color: aliceblue;
-    border-radius: 6px; /* Cor ao passar o mouse */
+    background: rgba(255, 255, 255, 0.2); /* Fundo semitransparente */
+    color: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar o item */
 }
 
 .menunav {
-    background-color: rgb(255, 251, 0); /* Cor do menu de navegação */
+    background-color: #ffc107; /* Tom mais quente e vibrante */
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #343a40;
+    border-radius: 10px;
 }
 
-/* Modal styles */
 .modal {
     position: fixed;
     top: 0;
@@ -45,27 +67,46 @@ body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4); /* Fundo semitransparente */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente mais escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Tamanho do modal */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Sombra mais suave */
+    width: 60%;
 }
 
 .close {
     color: #aaa;
-    float: right;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: #333;
     text-decoration: none;
-    cursor: pointer;
+}
+html, body, #root {
+    height: 100%;
+    margin: 0;
+}
+
+.d-flex {
+    height: 100%;
+}
+
+.flex-fill {
+    flex: 1;
+    min-height: 100vh; /* Garantir que o main ocupe 100% da altura da viewport */
+}
+
+.p-3 {
+    padding: 1rem; /* Espaçamento já existente */
 }
