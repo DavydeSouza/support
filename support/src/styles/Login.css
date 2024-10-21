@@ -1,5 +1,3 @@
-/* src/styles/Login.css */
-
 /* Estilizando o corpo da página para centralizar o formulário */
 body {
   margin: 0;
@@ -8,17 +6,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Faz com que o corpo ocupe toda a altura da viewport */ /* Cor de fundo */
+  height: 100vh; /* Faz o body ocupar toda a altura da viewport */
+  background-color: #f0f0f0; /* Cor de fundo */
 }
 
+/* Contêiner principal da página */
 main {
   width: 100%;
-  max-width: 400px; /* Controlando o tamanho máximo da área do formulário */
-  padding: 2rem;
-  box-sizing: border-box; /* Para incluir padding e border no cálculo de largura */
+  height: 100vh; /* O main também ocupa toda a altura da viewport */
   display: flex;
-  justify-content: center; /* Centraliza o conteúdo dentro do main */
-  align-items: center; /* Alinha os itens verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 /* Estilo da seção principal do formulário */
@@ -32,11 +32,6 @@ section {
   text-align: center; /* Centraliza o texto dentro do formulário */
 }
 
-.login_label {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 /* Título do formulário */
 .login_title {
   font-size: 1.5rem;
@@ -46,11 +41,20 @@ section {
 }
 
 /* Estilo da mensagem de erro */
-.error{
+.error {
   color: red;
   text-align: center;
   margin-bottom: 1rem;
   font-size: 0.875rem; /* Um pouco menor que o texto normal */
+}
+
+/* Estilo dos rótulos dos campos */
+.login_label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 1rem;
+  text-align: left;
 }
 
 /* Estilo do botão */
@@ -68,4 +72,3 @@ button {
 button:hover {
   background-color: #0056b3; /* Cor do botão ao passar o mouse */
 }
-
