@@ -4,6 +4,7 @@ import { Nav, Modal, Button, Form, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/home.css'; // Importar o CSS personalizado
 import { NavLink } from 'react-router-dom';
+import { FiLogOut } from 'react-icons/fi';
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false);
@@ -75,7 +76,16 @@ const Home = () => {
                         <li>
                             <Nav.Link href="#contact">Contato</Nav.Link>
                         </li>
+
                     </ul>
+
+                    <footer className="p-3">
+                        <Nav.Link className="text-danger d-flex align-items-center">
+                            <FiLogOut className="me-2" /> {/* Ícone de logout com espaçamento */}
+                                Logout
+                        </Nav.Link>
+                    </footer>
+
                 </nav>
 
                 <main className="flex-fill p-3">
@@ -117,7 +127,7 @@ const Home = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <p><strong>Software para Controle de Chamados:</strong> Gestão Eficiente de Demandas</p>
-                    <p>Nos dias de hoje...</p>
+                    <p><strong>Feito por:</strong> Davy de Souza</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
