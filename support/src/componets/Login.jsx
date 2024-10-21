@@ -46,7 +46,7 @@ function Login() {
                 id="floatingInput" 
                 placeholder="name@example.com"
                 value={email}
-                maxLength={12}
+                maxLength={40}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <label htmlFor="floatingInput" >Email</label>
