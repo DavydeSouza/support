@@ -78,7 +78,9 @@ body {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Sombra mais suave */
-    width: 60%;
+    width: 96%; /* Ajuste para que a modal ocupe 96% da viewport */
+    max-width: 800px; /* Limite máximo para modais em telas grandes */
+    margin: 0 20px; /* Margem para evitar que encoste nas bordas em telas menores */
 }
 
 .close {
@@ -93,6 +95,7 @@ body {
     color: #333;
     text-decoration: none;
 }
+
 html, body, #root {
     height: 100%;
     margin: 0;
