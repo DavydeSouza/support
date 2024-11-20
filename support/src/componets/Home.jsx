@@ -5,19 +5,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/home.css'; // Importar o CSS personalizado
 import { NavLink } from 'react-router-dom';
 import { FiLogOut } from 'react-icons/fi';
+import axios from 'axios';
+
+const API_URL = 'http://localhost:5000/api/chamados'; // URL base do backend
 
 const Home = () => {
     const [showModal, setShowModal] = useState(false);
     const [showChamadoModal, setShowChamadoModal] = useState(false); 
-    const [showAmpliachamado, setShowAmpliachamado] = useState(false); // Novo modal para ampliar chamados
+    const [showAmpliachamado, setShowAmpliachamado] = useState(false);
     const [chamado, setChamado] = useState({
         titulo: '',
         descricao: '',
         prioridade: ''
     });
-    const [chamados, setChamados] = useState([]); 
-    const [selectedChamado, setSelectedChamado] = useState(null); // Armazena o chamado clicado
+    const [chamados, setChamados] = useState([]);
+    const [selectedChamado, setSelectedChamado] = useState(null);
 
+    // Handlers para modais
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
@@ -29,32 +33,54 @@ const Home = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setChamado(prevState => ({
+        setChamado((prevState) => ({
             ...prevState,
             [name]: value
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Chamado enviado:', chamado);
-        setChamados(prevChamados => [...prevChamados, chamado]);
-        setChamado({ titulo: '', descricao: '', prioridade: '' });
-        handleChamadoClose();
+    // Função para buscar chamados do backend
+    const fetchChamados = async () => {
+        try {
+            const response = await axios.get(API_URL);
+            setChamados(response.data);
+        } catch (error) {
+            console.error('Erro ao buscar os chamados:', error);
+        }
     };
 
-    useEffect(() => {
-        const chamadosSimulados = [
-            { titulo: "Problema no sistema", descricao: "Erro ao acessar", prioridade: "Alta" },
-            { titulo: "Solicitação de suporte", descricao: "Não consigo acessar o e-mail", prioridade: "Média" }
-        ];
-        setChamados(chamadosSimulados);
-    }, []);
+    // Função para criar um novo chamado
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(API_URL, chamado);
+            setChamados((prevChamados) => [...prevChamados, response.data]); // Atualiza a tabela
+            setChamado({ titulo: '', descricao: '', prioridade: '' });
+            handleChamadoClose(); // Fecha o modal
+        } catch (error) {
+            console.error('Erro ao criar chamado:', error);
+        }
+    };
+
+    // Função para deletar um chamado
+    const handleDeleteChamado = async (id) => {
+        try {
+            await axios.delete(`${API_URL}/${id}`);
+            setChamados((prevChamados) => prevChamados.filter((chamado) => chamado.id !== id));
+        } catch (error) {
+            console.error('Erro ao deletar chamado:', error);
+        }
+    };
 
     const handleRowClick = (chamado) => {
         setSelectedChamado(chamado);
         handleAmpliachamadoShow();
     };
+
+    // useEffect para carregar chamados ao montar o componente
+    useEffect(() => {
+        fetchChamados();
+    }, []);
 
     return (
         <>
@@ -76,16 +102,12 @@ const Home = () => {
                         <li>
                             <Nav.Link href="#contact">Contato</Nav.Link>
                         </li>
-
                     </ul>
-
                     <footer className="p-3">
                         <Nav.Link className="text-danger d-flex align-items-center">
-                            <FiLogOut className="me-2" /> {/* Ícone de logout com espaçamento */}
-                                Logout
+                            <FiLogOut className="me-2" /> Logout
                         </Nav.Link>
                     </footer>
-
                 </nav>
 
                 <main className="flex-fill p-3">
@@ -98,6 +120,7 @@ const Home = () => {
                                     <th>Título</th>
                                     <th>Descrição</th>
                                     <th>Prioridade</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,11 +131,17 @@ const Home = () => {
                                             <td>{chamado.titulo}</td>
                                             <td>{chamado.descricao}</td>
                                             <td>{chamado.prioridade}</td>
+                                            <td>
+                                                <Button variant="danger" onClick={(e) => { 
+                                                    e.stopPropagation();
+                                                    handleDeleteChamado(chamado.id);
+                                                }}>Excluir</Button>
+                                            </td>
                                         </tr>
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan="4" className="text-center">Nenhum chamado aberto</td>
+                                        <td colSpan="5" className="text-center">Nenhum chamado aberto</td>
                                     </tr>
                                 )}
                             </tbody>
@@ -191,7 +220,6 @@ const Home = () => {
                 </Modal.Body>
             </Modal>
 
-            {/* Modal para visualização do chamado ampliado */}
             <Modal show={showAmpliachamado} onHide={handleAmpliachamadoClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Detalhes do Chamado</Modal.Title>
