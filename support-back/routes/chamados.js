@@ -63,7 +63,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Deletar um chamado
-router.delete('/:id', async (req, res) => {
+/*router.delete('/:id', async (req, res) => {
     try {
         const chamado = await Chamado.findByPk(req.params.id);
         if (!chamado) {
@@ -75,6 +75,6 @@ router.delete('/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: 'Erro ao deletar chamado' });
     }
-});
+});*/
 
 module.exports = router;

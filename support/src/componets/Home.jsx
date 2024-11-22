@@ -120,7 +120,7 @@ const Home = () => {
                                     <th>Título</th>
                                     <th>Descrição</th>
                                     <th>Prioridade</th>
-                                    <th>Ações</th>
+                                    {/*<th>Ações</th>*/}
                                 </tr>
                             </thead>
                             <tbody>
@@ -131,12 +131,14 @@ const Home = () => {
                                             <td>{chamado.titulo}</td>
                                             <td>{chamado.descricao}</td>
                                             <td>{chamado.prioridade}</td>
+                                            {/* 
                                             <td>
                                                 <Button variant="danger" onClick={(e) => { 
                                                     e.stopPropagation();
                                                     handleDeleteChamado(chamado.id);
                                                 }}>Excluir</Button>
                                             </td>
+                                            */}
                                         </tr>
                                     ))
                                 ) : (
